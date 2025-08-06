@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Fira Code", monospace;
+  background-color: #282C33;
+}
+
+@layer utilities {
+  .bg-dotted-pattern {
+    background-image: radial-gradient(#a855f7 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+}
