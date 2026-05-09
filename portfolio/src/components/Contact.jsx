@@ -1,71 +1,95 @@
-import React from 'react';
-import { Phone, Mail, Github, Linkedin } from 'lucide-react';
-
+import { Phone, Mail, Github, Linkedin, MapPin } from 'lucide-react';
 
 const DotGrid = ({ className }) => (
     <div className={`absolute grid grid-cols-3 gap-2 ${className}`}>
         {Array.from({ length: 15 }).map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-gray-600 rounded-full"></div>
+            <div key={i} className="w-1.5 h-1.5 bg-gray-700 rounded-full"></div>
         ))}
     </div>
 );
 
 function Contact() {
     return (
-        <section id="contact" className="bg-gray-900 text-white font-mono pt-16 pb-30">
+        <section id="contact" className="bg-gray-900 text-white font-mono pt-16 pb-24">
             <div className="max-w-6xl mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-8">
-                    {/* Left Side: Title and Text */}
-                    <div className="md:col-span-8">
-                        <div className="flex items-center gap-4 mb-12">
-                            <h2 className="text-3xl font-bold">
-                                <span className="text-purple-400">#</span>contacts
-                            </h2>
-                            <div className="w-1/3 h-px bg-purple-400"></div>
+                {/* Section Header */}
+                <div className="flex items-center gap-4 mb-12">
+                    <h2 className="text-3xl font-bold">
+                        <span className="text-purple-400">#</span>contact
+                    </h2>
+                    <div className="w-1/3 h-px section-line"></div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    {/* Left: Text */}
+                    <div className="relative">
+                        <DotGrid className="relative hidden lg:grid mb-6 top-0 left-0" />
+                        <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                            I'm currently open to <span className="text-purple-400">freelance work</span> and <span className="text-purple-400">full-time opportunities</span>. Got a project, job offer, or just want to say hi? I'd love to hear from you.
+                        </p>
+
+                        <div className="flex flex-wrap gap-3 mb-6">
+                            <a
+                                href="https://github.com/FassihShah"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 border border-gray-600 text-gray-300 py-2 px-4 rounded hover:border-purple-400 hover:text-white transition-all duration-200"
+                            >
+                                <Github size={18} />
+                                <span className="text-sm">GitHub</span>
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/syed-fassih"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 border border-gray-600 text-gray-300 py-2 px-4 rounded hover:border-purple-400 hover:text-white transition-all duration-200"
+                            >
+                                <Linkedin size={18} />
+                                <span className="text-sm">LinkedIn</span>
+                            </a>
                         </div>
-                        <div className="flex gap-8">
-                           <DotGrid className="relative top-1 hidden lg:grid" />
-                           <div className="text-gray-400 space-y-6">   
-                               <p>Got a project, job, or idea in mind? Let's connect and build something awesome together!</p>
-                               <div className="flex flex-wrap items-center gap-4">
-                                    <a
-                                        href="https://github.com/FassihShah" // Replace with your GitHub profile URL
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 border border-gray-600 text-gray-300 py-2 px-4 hover:border-purple-400 hover:text-white transition-colors"
-                                    >
-                                        <Github size={24} />
-                                        <span>GitHub</span>
-                                    </a>
-                                    <a
-                                        href="https://www.linkedin.com/in/syed-fassih" // Replace with your LinkedIn profile URL
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 border border-gray-600 text-gray-300 py-2 px-4 hover:border-purple-400 hover:text-white transition-colors"
-                                    >
-                                        <Linkedin size={24} />
-                                        <span>LinkedIn</span>
-                                    </a>
-                                </div>
-                                <p className="text-gray-400 mt-2">📍 Based in <span className="text-purple-400">Lahore, Pakistan</span></p>
-                           </div>
+
+                        <div className="flex items-center gap-2 text-gray-500 text-sm">
+                            <MapPin size={14} className="text-purple-400" />
+                            <span>Based in <span className="text-purple-400">Lahore, Pakistan</span></span>
                         </div>
                     </div>
 
-                    {/* Right Side: Message Card */}
-                    <div className="md:col-span-4">
-                        <div className="border border-gray-600 p-4 h-full">
-                            <h3 className="font-semibold text-white mb-2">Message me here</h3>
-                            <hr className="border-gray-700 mb-2" />
-                            <div className="space-y-3">
-                                <a href="tel:+92-3154472419" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
-                                    <Phone size={20} />
-                                    <span>+92-315 4472419</span>
-                                </a>
-                                <a href="mailto:fassihshah22@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
-                                    <Mail size={20} />
-                                    <span>fassihshah22@gmail.com</span>
-                                </a>
+                    {/* Right: Contact card */}
+                    <div className="border border-gray-700/80 rounded-lg overflow-hidden bg-gray-900">
+                        <div className="px-4 py-3 border-b border-gray-700/60 flex items-center gap-2">
+                            <span className="text-purple-400 text-xs">▹</span>
+                            <h3 className="text-white font-semibold text-sm">Reach me directly</h3>
+                        </div>
+                        <div className="p-5 space-y-4">
+                            <a
+                                href="mailto:fassihshah22@gmail.com"
+                                className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+                            >
+                                <div className="w-9 h-9 rounded border border-gray-700 group-hover:border-purple-400/50 flex items-center justify-center transition-colors">
+                                    <Mail size={16} className="text-purple-400" />
+                                </div>
+                                <div>
+                                    <p className="text-xs text-gray-500">Email</p>
+                                    <p className="text-sm">fassihshah22@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <a
+                                href="tel:+923154472419"
+                                className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+                            >
+                                <div className="w-9 h-9 rounded border border-gray-700 group-hover:border-purple-400/50 flex items-center justify-center transition-colors">
+                                    <Phone size={16} className="text-purple-400" />
+                                </div>
+                                <div>
+                                    <p className="text-xs text-gray-500">Phone</p>
+                                    <p className="text-sm">+92-315 4472419</p>
+                                </div>
+                            </a>
+
+                            <div className="pt-2 border-t border-gray-700/60">
+                                <p className="text-xs text-gray-600">Response time: usually within 24 hours</p>
                             </div>
                         </div>
                     </div>

@@ -1,109 +1,89 @@
+const DotGrid = ({ className }) => (
+    <div className={`absolute grid grid-cols-5 gap-2 ${className}`}>
+        {Array.from({ length: 25 }).map((_, i) => (
+            <div key={i} className="w-1.5 h-1.5 bg-gray-700 rounded-full"></div>
+        ))}
+    </div>
+);
 
-const SkillCard = ({ title, lines }) => (
-    <div className="border border-gray-600">
-        <h3 className="text-white font-bold p-2">{title}</h3>
-        <hr className="border-gray-600" />
-        <div className="p-2 text-gray-400 space-y-1">
-            {lines.map((line, index) => (
-                <p key={index}>{line}</p>
+const SkillGroup = ({ title, skills }) => (
+    <div className="border border-gray-700/80 rounded-lg overflow-hidden bg-gray-900">
+        <div className="px-4 py-2.5 border-b border-gray-700/60 flex items-center gap-2">
+            <span className="text-purple-400 text-xs">▹</span>
+            <h3 className="text-white font-semibold text-sm">{title}</h3>
+        </div>
+        <div className="p-4 flex flex-wrap gap-2">
+            {skills.map((skill, i) => (
+                <span
+                    key={i}
+                    className="skill-badge text-xs px-2.5 py-1 border border-gray-700 text-gray-400 rounded cursor-default"
+                >
+                    {skill}
+                </span>
             ))}
         </div>
     </div>
 );
 
-// A reusable component for the dot grid pattern
-const DotGrid = ({ className }) => (
-    <div className={`absolute grid grid-cols-5 gap-2 ${className}`}>
-        {Array.from({ length: 25 }).map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-gray-600 rounded-full"></div>
-        ))}
-    </div>
-);
-
+const skillGroups = [
+    {
+        title: "Languages",
+        skills: ["Python", "TypeScript", "JavaScript", "C#", "C++", "Kotlin", "SQL"]
+    },
+    {
+        title: "AI / ML",
+        skills: ["LangChain", "LangGraph", "RAG", "HuggingFace", "PyTorch", "TensorFlow", "Scikit-learn", "YOLOv11", "YOLOv5", "OpenCV", "Gemini", "MCP", "Make.com"]
+    },
+    {
+        title: "Web & Backend",
+        skills: ["FastAPI", "ASP.NET MVC", "Blazor", "REST APIs", "React", "Next.js", "Streamlit", "HTML", "CSS", "Bootstrap", "Tailwind CSS"]
+    },
+    {
+        title: "Databases",
+        skills: ["SQL Server", "PostgreSQL", "MongoDB", "ChromaDB", "MSSQL", "OracleDB"]
+    },
+    {
+        title: "Tools & Platforms",
+        skills: ["Git", "GitHub", "Vercel", "Netlify", "Docker", "JIRA", "Jupyter", "Google Colab"]
+    },
+];
 
 function Skills() {
-    const ai_ml = {
-    title: "AI / ML",
-    lines: [
-        "LangChain LangGraph RAG",
-        "HuggingFace PyTorch YOLOv5 OpenCV",
-        "TensorFlow Scikit-learn CNN"
-    ]
-};
-
-const languages = {
-    title: "Languages",
-    lines: [
-        "Python JavaScript C++",
-        "C# Kotlin SQL"
-    ]
-};
-
-const web_technologies = {
-    title: "Web Technologies",
-    lines: [
-        "ASP.NET MVC Blazor Rest APIs",
-        "FastAPI Streamlit React",
-        "HTML CSS Bootstrap"
-    ]
-};
-
-const other_tools = {
-    title: "Other Tools",
-    lines: [
-        "Git GitHub JIRA",
-        "Jupyter Colab"
-    ]
-};
-
-const databases = {
-    title: "Databases",
-    lines: [
-        "SQL Server OracleDB",
-        "ChromaDB MSSQL",
-        "MongoDB"
-    ]
-};
-
-
     return (
-        <section id="skills" className="bg-gray-900 py-24 px-4 font-mono">
+        <section id="skills" className="bg-gray-900 py-20 px-4 font-mono">
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-start">
-                {/* Left Side: Title and Decorative Elements */}
-                <div className="w-full lg:w-1/3">
-                    <div className="flex items-center gap-4">
+                {/* Left: Title + decorative */}
+                <div className="w-full lg:w-1/4 flex-shrink-0">
+                    <div className="flex items-center gap-4 mb-4">
                         <h2 className="text-3xl font-bold text-white">
                             <span className="text-purple-400">#</span>skills
                         </h2>
-                        <div className="w-1/3 h-px bg-purple-400"></div>
+                        <div className="h-px bg-purple-400 w-12"></div>
                     </div>
-                    {/* Decorative shapes container - hidden on small screens for clarity */}
-                    <div className="relative h-80 mt-10 hidden lg:block">
-                        <DotGrid className="top-0 left-4" />
-                        <DotGrid className="top-32 left-32" />
-                        <div className="absolute top-10 right-10 w-20 h-20 border border-gray-600"></div>
-                        <div className="absolute bottom-10 left-10 w-14 h-14 border border-gray-600"></div>
-                        {/* Overlapping squares */}
-                        <div className="absolute bottom-0 right-4 w-28 h-28">
-                            <div className="absolute top-0 left-4 w-24 h-24 border border-purple-400"></div>
-                            <div className="absolute top-4 left-0 w-24 h-24 border border-purple-400"></div>
+                    <p className="text-gray-500 text-sm mb-8 leading-relaxed">
+                        Technologies and tools I use to build intelligent, scalable software.
+                    </p>
+
+                    {/* Decorative shapes — hidden on small screens */}
+                    <div className="relative h-64 hidden lg:block">
+                        <DotGrid className="top-0 left-0" />
+                        <DotGrid className="bottom-0 right-0 opacity-50" />
+                        <div className="absolute top-14 right-6 w-16 h-16 border border-gray-700 rounded-sm"></div>
+                        <div className="absolute bottom-12 left-8 w-10 h-10 border border-gray-700 rounded-sm"></div>
+                        <div className="absolute bottom-4 right-4 w-20 h-20">
+                            <div className="absolute top-0 left-3 w-16 h-16 border border-purple-400/40 rounded-sm"></div>
+                            <div className="absolute top-3 left-0 w-16 h-16 border border-purple-400/20 rounded-sm"></div>
                         </div>
                     </div>
                 </div>
 
-                {/* Right Side: Skills Grid */}
-                <div className="w-full lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {/* Column 1 */}
-                    <div className="flex flex-col gap-6">
-                        <SkillCard title={languages.title} lines={languages.lines} />
-                        <SkillCard title={ai_ml.title} lines={ai_ml.lines} />
-                    </div>
-                    {/* Column 2 */}
-                    <div className="flex flex-col gap-6">
-                        <SkillCard title={databases.title} lines={databases.lines} />
-                        <SkillCard title={web_technologies.title} lines={web_technologies.lines} />
-                        <SkillCard title={other_tools.title} lines={other_tools.lines} />
-                    </div>
+                {/* Right: Skills grid */}
+                <div className="w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {skillGroups.map((group, i) => (
+                        <div key={i} className={i === skillGroups.length - 1 && skillGroups.length % 2 !== 0 ? 'sm:col-span-2' : ''}>
+                            <SkillGroup title={group.title} skills={group.skills} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
