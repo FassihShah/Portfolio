@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "PowerShell(gh api users/FassihShah/repos --jq '[.[] | {name, description, language, homepage, html_url, topics, stargazers_count, fork}] | sort_by\\(.stargazers_count\\) | reverse')",
+      "WebFetch(domain:api.github.com)",
+      "PowerShell(cd C:\\\\Users\\\\fassi\\\\portfolio; $job = Start-Job { npm run build 2>&1 }; Wait-Job $job -Timeout 60; Receive-Job $job | Select-Object -Last 20)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}
